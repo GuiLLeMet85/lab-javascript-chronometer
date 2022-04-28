@@ -12,27 +12,38 @@ class Chronometer {
 
 
     getMinutes() {
-        // ... your code goes here
+        return Math.floor(this.currentTime/60);
     }
 
     getSeconds() {
-        // ... your code goes here
+        return Math.floor(this.currentTime%60);
     }
 
     computeTwoDigitNumber(value) {
-        // ... your code goes here
+        const stringNumber = value.toString();
+        
+        if(stringNumber.length === 1) {
+            return `0${stringNumber}`
+          } else {
+            return stringNumber;
+          }
     }
 
     stop() {
-        // ... your code goes here
+        clearInterval (this.intervalID);
     }
-
+    
     reset() {
-        // ... your code goes here
+        this.currentTime = 0;
+
     }
 
     split() {
-        // ... your code goes here
+        // return a string where the time since the start is formatted as "mm:ss". 
+        //Internally, the split method can make usage of previously declared methods such as getMinutes, getSeconds, and computeTwoDigitNumber.
+        const minutes = this.computeTwoDigitNumber(this.getMinutes())
+        const seconds = this.computeTwoDigitNumber(this.getSeconds())
+        return `${minutes}:${seconds}`
     }
 }
 
